@@ -1,0 +1,18 @@
+nav {
+    background-color: blue;
+    color: white;
+    height: 80px;
+
+    & > ul {
+        list-style-type: none;
+    }
+}
+
+.right-margin{
+    margin-right: 10px;
+}
+
+.fixed-right {
+   margin-left: auto;
+   margin-right: 10px; 
+}

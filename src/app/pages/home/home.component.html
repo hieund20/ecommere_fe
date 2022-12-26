@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="list-item d-flex align-items-center justify-content-between">
+    <div class="card" *ngFor="let product of productList">
+      <div [routerLink]="['product/' + product.id]">
+        <img
+          src="../../../assets/images/logo.jpg"
+          width="100%"
+          class="card-image"
+        />
+        <div class="card-title">
+          <span>{{ product.name }}</span>
+        </div>
+        <div class="card-sub-title">
+          <span>{{ product.unitPrice }} đ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
