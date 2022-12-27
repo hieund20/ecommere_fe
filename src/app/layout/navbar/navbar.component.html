@@ -1,19 +1,13 @@
 <nav class="d-flex align-items-center">
   <ul class="d-flex align-items-center">
-    <li *ngFor="let nav of navList; last as isLast">
-      <div
-        [class]="isLast ? 'fixed-right' : 'right-margin'"
-        [routerLink]="[nav.router]"
-        routerLinkActive="router-link-active"
-      >
-        <img
-          *ngIf="nav.key === 'logo'"
-          [src]="nav.value"
-          width="50"
-          height="50"
-        />
-        <span *ngIf="nav.key === 'link'">{{ nav.value }}</span>
-      </div>
+    <li class="logo">
+      <img src="../../../assets/images/logo.png" width="180" />
+    </li>
+    <li *ngFor="let nav of navList" class="nav-item">
+      <span>{{ nav.name }}</span>
+    </li>
+    <li class="icon">
+      <img src="../../../assets/images/login.png" width="18" />
     </li>
   </ul>
 </nav>

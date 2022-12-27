@@ -4,15 +4,31 @@ nav {
     height: 80px;
 
     & > ul {
+        width: 90%;
+        margin: 0 auto;
         list-style-type: none;
     }
 }
 
-.right-margin{
+.right-margin {
     margin-right: 10px;
 }
 
 .fixed-right {
-   margin-left: auto;
-   margin-right: 10px; 
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.logo {
+    margin-right: 2rem;
+}
+
+.nav-item {
+    margin-right: 2rem;
+}
+
+.icon {
+    // float: right;
+    margin-left: auto;
+    margin-right: 0;
 }

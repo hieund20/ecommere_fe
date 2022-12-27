@@ -46,7 +46,6 @@ export class ProductDetailComponent implements OnInit {
     };
     this.commentService.postComment(body).subscribe((res) => {
       if (res.success) {
-        console.log('success');
         this.getProductById();
         this.isExpandCommentFrm = false;
       }
