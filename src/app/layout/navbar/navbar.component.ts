@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   navList: any[] = [
-    { key: 'logo', value: '../../../assets/images/logo.jpg' },
-    { key: 'link', value: 'Trang chủ' },
-    { key: 'link', value: 'Giỏ hàng' },
-    { key: 'link', value: 'Người dùng' }
+    { key: 'logo', value: '../../../assets/images/logo.jpg', router: '' },
+    { key: 'link', value: 'Trang chủ', router: '' },
+    { key: 'link', value: 'Giỏ hàng', router: '#' },
+    { key: 'link', value: 'Người dùng', router: '#' },
   ];
 }

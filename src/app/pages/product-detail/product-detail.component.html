@@ -1,1 +1,49 @@
-<p>product-detail works!</p>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="product-image col-48">
+      <img src="../../../assets/images/iphone_11.png" />
+    </div>
+    <div class="product-detail col-48">
+      <div class="product-detail-title">
+        <h2>{{ productDetail.name }}</h2>
+      </div>
+      <div class="product-detail-price">
+        <h4>{{ productDetail.unitPrice }} đ</h4>
+      </div>
+      <div class="product-action">
+        <button>MUA NGAY</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <h2>Đánh giá sản phẩm</h2>
+    <div *ngIf="productDetail.comment.length > 0; else noComment">
+      <div *ngFor="let comment of productDetail.comment">
+        <img />
+        <p>{{ comment.text }}</p>
+      </div>
+    </div>
+    <ng-template #noComment>
+      <p>Không có đánh giá</p>
+    </ng-template>
+    <div>
+      <button *ngIf="!isExpandCommentFrm" (click)="isExpandCommentFrm = true">
+        Viết đánh giá
+      </button>
+      <form *ngIf="isExpandCommentFrm" [formGroup]="commentFrm">
+        <div>
+          <input
+            type="text"
+            formControlName="text"
+            placeholder="Viết nội dung đánh giá"
+          />
+        </div>
+        <div>
+          <input type="text" formControlName="rating" placeholder="Đánh giá" />
+        </div>
+        <button (click)="onSubmitCommentFrm()">Gửi</button>
+      </form>
+    </div>
+  </div>
+</div>

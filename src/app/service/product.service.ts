@@ -3,14 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-  protected path = 'https://localhost:7008/api/'
+  protected path = 'https://localhost:7008/api/';
 
-  constructor(protected httpClient: HttpClient) { }
+  constructor(protected httpClient: HttpClient) {}
 
   getAllProduct(): Observable<any> {
-    return this.httpClient.get(this.path + 'product')
+    return this.httpClient.get(this.path + 'product');
+  }
+
+  getProductById(productId: string): Observable<any> {
+    return this.httpClient.get(this.path + `product/${productId}`);
   }
 }
