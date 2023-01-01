@@ -28,6 +28,35 @@
         color: #0066cc;
     }
 
+    & > .sub-product {
+        margin-bottom: 16px;
+        & .sub-product-title {
+            margin-bottom: 8px;
+        }
+
+        & .sub-sub-product-container {
+            display: flex;
+
+            & .sub-sub-product-card {
+                padding: 4px 8px 4px 8px;
+                border: 1px solid #EBEBEB;
+                cursor: pointer;
+                border-radius: 4px;
+                margin-right: 8px;
+            }
+
+
+            & .sub-sub-product-circle {
+                width: 25px;
+                height: 25px;
+                margin-right: 8px;
+                border-radius: 50%;
+                cursor: pointer;
+                background-color: #4C4B49;
+            }
+        }
+    }
+
     & > .product-action {
         & > button {
             background: #0066cc;

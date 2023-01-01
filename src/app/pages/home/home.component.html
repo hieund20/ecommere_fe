@@ -1,12 +1,9 @@
 <div class="container">
+  <h2 class="title-center">iPhone</h2>
   <div class="list-item d-flex align-items-center justify-content-between">
     <div class="card" *ngFor="let product of productList">
       <div [routerLink]="['product/' + product.id]">
-        <img
-          src="../../../assets/images/logo.jpg"
-          width="100%"
-          class="card-image"
-        />
+        <img [src]="product.imagePath" width="100%" class="card-image" />
         <div class="card-title">
           <span>{{ product.name }}</span>
         </div>

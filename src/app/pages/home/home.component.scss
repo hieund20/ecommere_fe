@@ -3,17 +3,23 @@
     margin: 4rem auto;
 }
 
+.title-center {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+}
+
 .list-item {
     flex-wrap: wrap;
 }
 
 .card {
-    width: 19%;
-    height: 300px;
-    border: 1px solid lightgray;
+    padding: 2rem 1rem 2rem 1rem;
     border-radius: 8px;
+    background-color: white;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 
@@ -27,7 +33,7 @@
         padding-left: 8px;
         padding-right: 8px;
 
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
         margin-bottom: 8px;
     }
@@ -37,5 +43,9 @@
         padding-right: 8px;
 
         font-size: 16px;
+        color: #0066cc;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 24px;
     }
 }
