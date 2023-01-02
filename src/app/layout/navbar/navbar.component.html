@@ -1,12 +1,12 @@
 <nav class="d-flex align-items-center">
   <ul class="d-flex align-items-center">
-    <li class="logo">
+    <li class="nav-item logo" [routerLink]="['/']">
       <img src="../../../assets/images/logo.png" width="180" />
     </li>
     <li *ngFor="let nav of navList" class="nav-item">
       <span>{{ nav.name }}</span>
     </li>
-    <li class="icon">
+    <li class="nav-item icon">
       <img src="../../../assets/images/login.png" width="18" />
       <img
         src="../../../assets/images/cart-icon.png"

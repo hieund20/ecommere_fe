@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/service/product.service';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,6 +14,9 @@ export class ProductDetailComponent implements OnInit {
   productId: string = '';
   productDetail: any = null;
   selectedSubSubProduct: any[] = [];
+
+  //Icons
+  faPen = faPen;
 
   commentFrm = new FormGroup({
     text: new FormControl(null, Validators.required),

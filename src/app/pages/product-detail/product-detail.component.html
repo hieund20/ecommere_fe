@@ -10,6 +10,8 @@
       <div class="product-detail-price">
         <h4>{{ productDetail.unitPrice }} đ</h4>
       </div>
+
+      <!-- sub-product -->
       <div
         class="sub-product"
         *ngFor="let subProduct of productDetail.subProduct"
@@ -43,12 +45,14 @@
         </div>
       </div>
 
+      <!-- action-buttons -->
       <div class="product-action">
         <button>MUA NGAY</button>
       </div>
     </div>
   </div>
 
+  <!-- comment -->
   <div class="comment">
     <h2>Đánh giá sản phẩm</h2>
     <div *ngIf="productDetail.comment.length > 0; else noComment">
@@ -61,21 +65,34 @@
       <p>Không có đánh giá</p>
     </ng-template>
     <div>
-      <button *ngIf="!isExpandCommentFrm" (click)="isExpandCommentFrm = true">
-        Viết đánh giá
+      <button
+        class="comment-btn"
+        *ngIf="!isExpandCommentFrm"
+        (click)="isExpandCommentFrm = true"
+      >
+        <fa-icon [icon]="faPen"></fa-icon>
+        &nbsp;Viết đánh giá
       </button>
       <form *ngIf="isExpandCommentFrm" [formGroup]="commentFrm">
         <div>
           <input
+            class="name-comment-input"
             type="text"
             formControlName="text"
             placeholder="Viết nội dung đánh giá"
           />
         </div>
         <div>
-          <input type="text" formControlName="rating" placeholder="Đánh giá" />
+          <textarea
+            class="content-comment-input"
+            type="text"
+            formControlName="rating"
+            placeholder="Đánh giá"
+          ></textarea>
         </div>
-        <button (click)="onSubmitCommentFrm()">Gửi</button>
+        <button class="submit-comment-btn" (click)="onSubmitCommentFrm()">
+          Gửi
+        </button>
       </form>
     </div>
   </div>
