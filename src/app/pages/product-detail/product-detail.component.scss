@@ -43,6 +43,10 @@
                 cursor: pointer;
                 border-radius: 4px;
                 margin-right: 8px;
+
+                &:hover{
+                    border-color: #0066cc;
+                }
             }
 
 
@@ -52,13 +56,18 @@
                 margin-right: 8px;
                 border-radius: 50%;
                 cursor: pointer;
-                background-color: #4C4B49;
+                border: 1px solid #EBEBEB;
+
+                &:hover{
+                    border-color: #0066cc;
+                }
             }
         }
     }
 
     & > .product-action {
         & > button {
+            cursor: pointer;
             background: #0066cc;
             border-radius: 8px;
             width: 100%;

@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/service/product.service';
 export class ProductDetailComponent implements OnInit {
   productId: string = '';
   productDetail: any = null;
+  selectedSubSubProduct: any[] = [];
 
   commentFrm = new FormGroup({
     text: new FormControl(null, Validators.required),
@@ -50,5 +51,23 @@ export class ProductDetailComponent implements OnInit {
         this.isExpandCommentFrm = false;
       }
     });
+  }
+
+  onChooseSubSubProduct(subSubItem: any) {
+    let subSubArr = [...this.selectedSubSubProduct];
+
+    //Check if selected item is same id with existing item in array, do not add new item
+    let isHaveItem = subSubArr.find((el: any) => el.id === subSubItem.id);
+    if (isHaveItem) return;
+
+    //Check if selected item is same subProductId with existing item in array, will delete old item
+    for (let i = 0; i < subSubArr.length; i++) {
+      if (subSubArr[i].subProductId === subSubItem.subProductId) {
+        subSubArr.splice(i, 1);
+      }
+    }
+
+    subSubArr.push(subSubItem);
+    this.selectedSubSubProduct = [...subSubArr];
   }
 }

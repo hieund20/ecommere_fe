@@ -10,30 +10,36 @@
       <div class="product-detail-price">
         <h4>{{ productDetail.unitPrice }} đ</h4>
       </div>
-      <div class="sub-product">
+      <div
+        class="sub-product"
+        *ngFor="let subProduct of productDetail.subProduct"
+      >
         <div class="sub-product-title">
-          <span>Dung lượng</span>
+          <span>{{ subProduct.name }}</span>
         </div>
-        <div class="sub-sub-product-container">
-          <div class="sub-sub-product-card">
-            <span>128 GB</span>
-          </div>
-          <div class="sub-sub-product-card">
-            <span>256 GB</span>
-          </div>
-          <div class="sub-sub-product-card">
-            <span>512 GB</span>
+        <div
+          class="sub-sub-product-container"
+          *ngIf="subProduct.type === 'MEMORY'"
+        >
+          <div
+            class="sub-sub-product-card"
+            *ngFor="let subSubProduct of subProduct.subSubProduct"
+            (click)="onChooseSubSubProduct(subSubProduct)"
+          >
+            <span>{{ subSubProduct.name }}</span>
           </div>
         </div>
-      </div>
-      <div class="sub-product">
-        <div class="sub-product-title">
-          <span>Màu sắc</span>
-        </div>
-        <div class="sub-sub-product-container">
-          <div class="sub-sub-product-circle"></div>
-          <div class="sub-sub-product-circle"></div>
-          <div class="sub-sub-product-circle"></div>
+
+        <div
+          class="sub-sub-product-container"
+          *ngIf="subProduct.type === 'COLOR'"
+        >
+          <div
+            class="sub-sub-product-circle"
+            *ngFor="let subSubProduct of subProduct.subSubProduct"
+            [style.backgroundColor]="subSubProduct.color"
+            (click)="onChooseSubSubProduct(subSubProduct)"
+          ></div>
         </div>
       </div>
 
