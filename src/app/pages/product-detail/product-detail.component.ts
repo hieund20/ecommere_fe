@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/service/product.service';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -27,6 +28,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private commentService: CommentService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) {}
 
@@ -73,5 +75,28 @@ export class ProductDetailComponent implements OnInit {
 
     subSubArr.push(subSubItem);
     this.selectedSubSubProduct = [...subSubArr];
+  }
+
+  onAddProductToCart() {
+    let subProductIdList: string[] = [];
+    let subSubProductIdList: string[] = [];
+
+    this.selectedSubSubProduct.forEach((el: any) => {
+      subProductIdList.push(el.subProductId);
+      subSubProductIdList.push(el.id);
+    });
+
+    let body = {
+      userId: '12e03f91-2f05-4a02-85cb-d50c37ce8262',
+      quantity: 2,
+      productId: this.productId,
+      subProductId: JSON.stringify(subProductIdList),
+      subSubProductId: JSON.stringify(subSubProductIdList),
+    };
+    this.cartService.addProductToCart(body).subscribe((res) => {
+      if (res.success) {
+        console.log('add product to cart success', res);
+      }
+    });
   }
 }
