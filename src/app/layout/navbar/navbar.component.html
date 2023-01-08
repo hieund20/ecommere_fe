@@ -7,12 +7,14 @@
       <span>{{ nav.name }}</span>
     </li>
     <li class="nav-item icon">
-      <img
-        src="../../../assets/images/cart-icon.png"
-        width="18"
-        [style.marginRight]="'32px'"
-        [routerLink]="['/cart']"
-      />
+      <div [style.marginRight]="'32px'">
+        <img
+          src="../../../assets/images/cart-icon.png"
+          width="18"
+          [routerLink]="['/cart']"
+        />
+        <span>{{ cartNumber$ | async }}</span>
+      </div>
       <img src="../../../assets/images/login.png" width="18" />
     </li>
   </ul>

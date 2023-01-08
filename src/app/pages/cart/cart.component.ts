@@ -3,6 +3,9 @@ import { Observable, Subject } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 import { SubProductService } from 'src/app/service/sub-product.service';
 import { SubSubProductService } from 'src/app/service/sub-sub-product.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
+import { changeNumberOfCart } from './../../store/actions/cart.actions';
 
 @Component({
   selector: 'app-cart',
@@ -11,11 +14,16 @@ import { SubSubProductService } from 'src/app/service/sub-sub-product.service';
 })
 export class CartComponent implements OnInit {
   productList: any = [];
+  totalPrice: number = 0;
+
+  //Icons
+  faTrash = faTrash;
 
   constructor(
     private cartService: CartService,
     private subProductService: SubProductService,
-    private subSubProductService: SubSubProductService
+    private subSubProductService: SubSubProductService,
+    private store: Store<{ cartNumber: number }>
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +33,8 @@ export class CartComponent implements OnInit {
   getAllProductInCart() {
     this.cartService.getAllCart().subscribe((res) => {
       if (res.success) {
-        
+        this.totalPrice = res.totalPrice;
+
         let productListTmp = [];
         let resData = res.data;
         for (let i = 0; i < resData.length; i++) {
@@ -95,5 +104,9 @@ export class CartComponent implements OnInit {
       }
     });
     return subSubProductName.asObservable();
+  }
+
+  onUpdateCart() {
+    this.store.dispatch(changeNumberOfCart());
   }
 }

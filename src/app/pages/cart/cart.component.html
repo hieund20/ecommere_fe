@@ -1,21 +1,73 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
-    <div class="col-68">
+    <div class="left col-68">
       <div
         class="title-columns d-flex justify-content-between align-items-center"
       >
-        <div><span>Hình ảnh</span></div>
-        <div><span>Tên sản phẩm</span></div>
-        <div><span>Giá bán</span></div>
-        <div><span>Số lượng</span></div>
-        <div></div>
+        <div class="col-20"><span>Hình ảnh</span></div>
+        <div class="col-30"><span>Tên sản phẩm</span></div>
+        <div class="col-20"><span>Giá bán</span></div>
+        <div class="col-20"><span>Số lượng</span></div>
+        <div class="col-10"></div>
       </div>
       <div class="product-list">
-        <div class="product">
-            
+        <div
+          class="product d-flex justify-content-between align-items-center"
+          *ngFor="let item of productList"
+        >
+          <div class="col-20" [style.height]="'80px'">
+            <img class="product-image" [src]="item.product.imagePath" />
+          </div>
+          <div class="col-30">
+            <p>{{ item.product.name }}</p>
+            <div
+              *ngIf="
+                item.subProductName.length !== 0 &&
+                item.subSubProductName.length !== 0
+              "
+            >
+              <div
+                class="product-sub-name"
+                *ngFor="let sub of item.subProductName; let i = index"
+              >
+                <div>
+                  <span>{{ sub }}</span
+                  >:&nbsp;<span>{{ item.subSubProductName[i] }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-20">
+            <span>{{ item.product.unitPrice }}đ</span>
+          </div>
+          <div class="col-20">
+            <input type="text" [value]="item.quantity" [style.width]="'50px'" />
+          </div>
+          <div class="col-10">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </div>
         </div>
       </div>
+
+      <div class="action-btn">
+        <button type="button" (click)="onUpdateCart()">
+          Cập nhật giỏ hàng
+        </button>
+        <button type="button" [routerLink]="['/']">Tiếp tục mua sắm</button>
+      </div>
     </div>
-    <div class="col-30"></div>
+    <div class="right col-25">
+      <div
+        class="total-price d-flex justify-content-between align-items-center"
+      >
+        <div class="title"><span> Tổng cộng: </span></div>
+        <div class="price">
+          <span> {{ totalPrice }}đ </span>
+        </div>
+      </div>
+      <div class="action-btn">
+        <button>Tiến hàng đặt hàng</button>
+      </div>
+    </div>
   </div>
 </div>

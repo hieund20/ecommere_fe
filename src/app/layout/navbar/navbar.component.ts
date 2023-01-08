@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/service/category.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +10,18 @@ import { CategoryService } from 'src/app/service/category.service';
 })
 export class NavbarComponent implements OnInit {
   navList: any[] = [];
+  cartNumber$: Observable<number> | undefined;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private store: Store<{ cartNumber: number }>
+  ) {
+    this.cartNumber$ = store.select((state) => state.cartNumber);
+  }
 
   ngOnInit(): void {
     this.getAllCategory();
+    this.onDetectCartChange();
   }
 
   getAllCategory() {
@@ -22,5 +31,14 @@ export class NavbarComponent implements OnInit {
         console.log('res', res);
       }
     });
+  }
+
+  //This function to check
+  onDetectCartChange() {
+    this.store
+      .select((state) => state.cartNumber)
+      .subscribe((res) => {
+        console.log('check', res);
+      });
   }
 }

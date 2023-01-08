@@ -12,6 +12,12 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartComponent } from './pages/cart/cart.component';
 
+//Ngrx Store
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './store/reducers/cart.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { CartEffects } from './store/effects/cart.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +34,9 @@ import { CartComponent } from './pages/cart/cart.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    StoreModule.forRoot({ cartNumber: cartReducer }, {}),
+    EffectsModule.forRoot([CartEffects]),
+    EffectsModule.forFeature([CartEffects])
   ],
   providers: [],
   bootstrap: [AppComponent],
